@@ -176,19 +176,19 @@ class Carousel
     {
         // Render main wrapper
         $this->attributes['id'] = substr($this->hash, 1);
-        $html = '<div'.HTML::attributes($this->attributes).'>';
+        $html = '<div'.HTML::attributes($this->attributes).'>' . PHP_EOL;
 
             // Render items
-            $html .= '<div class="carousel-inner">';
+            $html .= "\t" . '<div class="carousel-inner">' . PHP_EOL;
                 foreach ($this->items as $key => $item) {
-                    $html .= $this->createItem($item, $key);
+                    $html .= "\t\t" . $this->createItem($item, $key) . PHP_EOL;
                 }
-            $html .= '</div>';
+            $html .= "\t" . '</div>' . PHP_EOL;
 
             // Render navigation
-            $html .= HTML::link($this->hash, $this->prev, array('class' => 'carousel-control left',  'data-slide' => 'prev'));
-            $html .= HTML::link($this->hash, $this->next, array('class' => 'carousel-control right', 'data-slide' => 'next'));
-        $html .= '</div>';
+            $html .= "\t" . HTML::link($this->hash, $this->prev, array('class' => 'carousel-control left',  'data-slide' => 'prev')) . PHP_EOL;
+            $html .= "\t" . HTML::link($this->hash, $this->next, array('class' => 'carousel-control right', 'data-slide' => 'next')) . PHP_EOL;
+        $html .= '</div>' . PHP_EOL;
 
         return $html;
     }
@@ -220,20 +220,20 @@ class Carousel
 
         // Build HTML
         $active = $this->active == $key ? ' active' : null;
-        $html = '<div class="item'.$active.'">';
+        $html = '<div class="item'.$active.'">' . PHP_EOL;
 
         // Render the image
-        $html .= HTML::image($image, $altText, $attributes);
+        $html .= "\t\t\t" . HTML::image($image, $altText, $attributes) . PHP_EOL;
 
         // If we have a caption, render it
         if ($caption or $label) {
-            $html .= '<div class="carousel-caption">';
-            if ($label)   $html .= '<h4>'.$label.'</h4>';
-            if ($caption) $html .= '<p>'.$caption.'</p>';
-            $html .= '</div>';
+            $html .= "\t\t\t" . '<div class="carousel-caption">' . PHP_EOL;
+            if ($label)   $html .= "\t\t\t" . '<h4>'.$label.'</h4>' . PHP_EOL;
+            if ($caption) $html .= "\t\t\t" . '<p>'.$caption.'</p>' . PHP_EOL;
+            $html .= "\t\t" . '</div>' . PHP_EOL;
         }
 
-        $html .= '</div>';
+        $html .= "\t\t" . '</div>' . PHP_EOL;
 
         return $html;
     }
