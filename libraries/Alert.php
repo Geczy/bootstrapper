@@ -42,14 +42,14 @@ class Alert
     {
         $attributes = Helpers::add_class($attributes, 'alert '.$type);
 
-        $html = '<div'.HTML::attributes($attributes).'>';
+        $html = '<div'.HTML::attributes($attributes).'>' . PHP_EOL;
 
         // Add close icon if necessary
         if ($enable_close) {
-            $html .= HTML::link('#', '&times;', array('class' => 'close', 'data-dismiss' => 'alert'));
+            $html .= "\t" . HTML::link('#', '&times;', array('class' => 'close', 'data-dismiss' => 'alert')) . PHP_EOL;
         }
 
-        $html .= $message.'</div>';
+        $html .= $message.'</div>' . PHP_EOL;
 
         return $html;
     }
